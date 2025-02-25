@@ -3,6 +3,6 @@
 @layer components {
     .default-border {
         border-width: 2px;
-        border-color: black;
+        border-color: white;
     }
 }
