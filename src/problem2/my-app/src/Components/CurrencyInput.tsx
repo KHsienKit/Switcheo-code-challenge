@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import { CurrencyInputProps } from '../types'
 
-const CurrencyInput = () => {
-    const [count, setCount] = useState(0)
+const CurrencyInput = ({amount, changeAmount}: CurrencyInputProps) => {
 
     return (
         <div className="">
