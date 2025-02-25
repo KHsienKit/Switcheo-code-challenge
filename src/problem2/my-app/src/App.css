@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@layer components {
+    .default-border {
+        border-width: 2px;
+        border-color: black;
+    }
+}
