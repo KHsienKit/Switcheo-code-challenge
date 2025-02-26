@@ -29,7 +29,7 @@ const App = () => {
 	const changeBuyAmount = (amount: number) => {
 		let temp = amount.toFixed(5)
 		let formattedAmount = parseFloat(temp)
-		return setSellAmount(formattedAmount);
+		return setBuyAmount(formattedAmount);
 	}
 
 	const focusOnSell = () => {
