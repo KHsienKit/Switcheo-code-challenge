@@ -28,3 +28,9 @@ export interface CurrencyInputProps {
 export interface SwapIconProps {
     swap: () => void
 }
+
+export interface ConvertToUSDProps {
+    amount: number,
+    currency: string,
+    prices: Record<string, number>
+}

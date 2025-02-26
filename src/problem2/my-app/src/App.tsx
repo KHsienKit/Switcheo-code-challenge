@@ -63,10 +63,10 @@ const App = () => {
 
   	return (
     	<div>
-      		<div className="px-96 default-border">
+      		<div className="px-80">
         		<h1 className="text-6xl ">Currency Swap</h1>
       		</div>
-      		<div className="flex flex-row default-border relative">
+      		<div className="flex flex-row relative">
 				<CurrencyContainer
 					isSellContainer={true} 
 					sellCurrency={sellCurrency} 
