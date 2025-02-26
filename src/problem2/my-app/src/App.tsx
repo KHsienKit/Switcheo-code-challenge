@@ -66,9 +66,9 @@ const App = () => {
     }, []);
 
   	return (
-    	<div>
+    	<div className="w-340">
       		<div className="px-80">
-        		<h1 className="text-6xl ">Currency Swap</h1>
+        		<h1 className="text-6xl text-center">Currency Swap</h1>
       		</div>
       		<div className="flex flex-row relative">
 				<CurrencyContainer

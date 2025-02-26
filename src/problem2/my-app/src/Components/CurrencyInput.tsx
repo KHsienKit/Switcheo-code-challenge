@@ -16,6 +16,7 @@ const CurrencyInput = ({amount, changeAmount, focusOnCurrent}: CurrencyInputProp
             <input type="number"
                     value={amount}
                     min={0}
+                    max={99999999}
                     onChange={event => changeAmount(parseFloat(event.target.value))}
                     onKeyDown={(event) => {
                         const key = event.code;
@@ -24,7 +25,7 @@ const CurrencyInput = ({amount, changeAmount, focusOnCurrent}: CurrencyInputProp
                             return false;
                         }
                     }}
-                    className="border-2 flex-grow appearance-none w-40">
+                    className="border-1 rounded-sm flex-grow appearance-none w-40 focus:outline-0 px-0.5">
             </input>
         </form>
     )
