@@ -1,15 +1,25 @@
-import { useState } from 'react'
 import { CurrencyInputProps } from '../types'
 
-const CurrencyInput = ({amount, changeAmount}: CurrencyInputProps) => {
+const isOperator = (code: string): boolean => {
+    if (code == "Enter"  || code == "NumpadEnter"    ||
+        code == "Minus"  || code == "NumpadSubtract" || 
+        code == "Equal"  || code == "NumpadAdd"        ) {
+            return true
+        }
+    return false
+}
+
+const CurrencyInput = ({amount, changeAmount, focusOnCurrent}: CurrencyInputProps) => {
 
     return (
-        <form className="flex">
+        <form className="flex" onClick={focusOnCurrent}>
             <input type="number"
                     value={amount}
-                    onChange={event => changeAmount(parseInt(event.target.value))}
+                    min={0}
+                    onChange={event => changeAmount(parseFloat(event.target.value))}
                     onKeyDown={(event) => {
-                        if (event.code == "Enter" || event.code == "NumpadEnter") {
+                        const key = event.code;
+                        if (isOperator(key)) {
                             event.preventDefault();
                             return false;
                         }

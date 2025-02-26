@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
-import SellCurrencyContainer from "./Components/SellCurrencyContainer.tsx"
-import BuyCurrencyContainer from "./Components/BuyCurrencyContainer.tsx"
+// import SellCurrencyContainer from "./Components/CurrencyContainer.tsx"
+// import BuyCurrencyContainer from "./Components/BuyCurrencyContainer.tsx"
+import CurrencyContainer from './Components/CurrencyContainer.tsx';
 
 const App = () => {
+
   	const [sellCurrency, setSellCurrency] = useState<string>("ETH")
 	const [sellAmount, setSellAmount] = useState<number>(0);
   	const [buyCurrency, setBuyCurrency] = useState<string>("USD")
 	const [buyAmount, setBuyAmount] = useState<number>(0);
 	const [prices, setPrices] = useState<Record<string, number>>({})
+	const [isSellFocused, setIsSellFocused] = useState<boolean>(false)
 
 	const changeSellCurrency = (currency: string) => {
 		return setSellCurrency(currency);
@@ -24,6 +27,14 @@ const App = () => {
 
 	const changeBuyAmount = (amount: number) => {
 		return setBuyAmount(amount);
+	}
+
+	const focusOnSell = () => {
+		return setIsSellFocused(true);
+	}
+
+	const focusOnBuy = () => {
+		return setIsSellFocused(false);
 	}
 
 	useEffect(() => {
@@ -48,8 +59,32 @@ const App = () => {
         		<h1 className="text-6xl ">Currency Swap</h1>
       		</div>
       		<div className="flex flex-row default-border">
-				<SellCurrencyContainer currency={sellCurrency} changeCurrency={changeSellCurrency} amount={sellAmount} changeAmount={changeSellAmount} prices={prices}/>
-				<BuyCurrencyContainer currency={buyCurrency} changeCurrency={changeBuyCurrency} amount={sellAmount} changeAmount={changeSellAmount} prices={prices}/>
+				<CurrencyContainer
+					isSellContainer={true} 
+					sellCurrency={sellCurrency} 
+					changeSellCurrency={changeSellCurrency} 
+					sellAmount={sellAmount} 
+					changeSellAmount={changeSellAmount} 
+					buyCurrency={buyCurrency} 
+					changeBuyCurrency={changeBuyCurrency} 
+					buyAmount={buyAmount} 
+					changeBuyAmount={changeBuyAmount} 
+					prices={prices}
+					isSellFocused={isSellFocused}
+					focusOnCurrent={focusOnSell}/>
+				<CurrencyContainer  
+					isSellContainer={false}
+					sellCurrency={sellCurrency} 
+					changeSellCurrency={changeSellCurrency} 
+					sellAmount={sellAmount} 
+					changeSellAmount={changeSellAmount} 
+					buyCurrency={buyCurrency} 
+					changeBuyCurrency={changeBuyCurrency} 
+					buyAmount={buyAmount} 
+					changeBuyAmount={changeBuyAmount}
+					prices={prices}
+					isSellFocused={isSellFocused}
+					focusOnCurrent={focusOnBuy}/>
       		</div>
     	</div>
   	)

@@ -1,9 +1,16 @@
 export interface CurrencyContainerProps {
-    currency: string,
-    changeCurrency: (currency: string) => void,
+    isSellContainer: boolean,
+    sellCurrency: string,
+    changeSellCurrency: (currency: string) => void,
+    sellAmount: number,
+    changeSellAmount: (amount: number) => void,
+    buyCurrency: string,
+    changeBuyCurrency: (currency: string) => void,
+    buyAmount: number,
+    changeBuyAmount: (amount: number) => void,
     prices: Record<string, number>,
-    amount: number,
-    changeAmount: (amount: number) => void
+    isSellFocused: boolean,
+    focusOnCurrent: () => void
 }
 
 export interface CurrencyMenuProps {
@@ -14,5 +21,6 @@ export interface CurrencyMenuProps {
 
 export interface CurrencyInputProps {
     amount: number,
-    changeAmount: (currency: number) => void
+    changeAmount: (currency: number) => void,
+    focusOnCurrent: () => void
 }
