@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
-// import SellCurrencyContainer from "./Components/CurrencyContainer.tsx"
-// import BuyCurrencyContainer from "./Components/BuyCurrencyContainer.tsx"
 import CurrencyContainer from './Components/CurrencyContainer.tsx';
+import SwapIcon from './Components/SwapIcon.tsx';
 
 const App = () => {
 
@@ -37,15 +36,24 @@ const App = () => {
 		return setIsSellFocused(false);
 	}
 
+	const swap = () => {
+		setSellCurrency(buyCurrency)
+		setSellAmount(buyAmount)
+		setBuyCurrency(sellCurrency)
+		setBuyAmount(sellAmount)
+	}
+
 	useEffect(() => {
         axios.get("https://interview.switcheo.com/prices.json")
 			.then((prices) => {
 				const data = prices.data;
-				setPrices((prev) => {
+				setPrices(() => {
+					let oj: Record<string,number> = {}
 					for (let i = 0; i < data.length; i += 1) {
-						prev[data[i]["currency"]] = data[i]["price"]
+						// prev[data[i]["currency"]] = data[i]["price"]
+						oj[data[i]["currency"]] = data[i]["price"]
 					}
-					return prev;
+					return oj;
 				})
         	})
 			.catch(error => {
@@ -58,7 +66,7 @@ const App = () => {
       		<div className="px-96 default-border">
         		<h1 className="text-6xl ">Currency Swap</h1>
       		</div>
-      		<div className="flex flex-row default-border">
+      		<div className="flex flex-row default-border relative">
 				<CurrencyContainer
 					isSellContainer={true} 
 					sellCurrency={sellCurrency} 
@@ -72,6 +80,8 @@ const App = () => {
 					prices={prices}
 					isSellFocused={isSellFocused}
 					focusOnCurrent={focusOnSell}/>
+				<SwapIcon 
+					swap={swap}/>
 				<CurrencyContainer  
 					isSellContainer={false}
 					sellCurrency={sellCurrency} 

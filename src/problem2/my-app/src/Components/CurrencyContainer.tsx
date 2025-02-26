@@ -25,10 +25,10 @@ const CurrencyContainer = ({
     isSellFocused, focusOnCurrent}: CurrencyContainerProps) => {
 
     useEffect(() => {
-        if (isSellFocused && !isSellContainer) {
+        if (isSellFocused && !isSellContainer && sellAmount != 0) {
             changeBuyAmount(changeCurrency(prices[sellCurrency], sellAmount, prices[buyCurrency]))
         }
-        else if (!isSellFocused && isSellContainer) {
+        else if (!isSellFocused && isSellContainer && buyAmount != 0) {
             changeSellAmount(changeCurrency(prices[buyCurrency], buyAmount, prices[sellCurrency]))
         }
     }, [sellAmount, buyAmount])
@@ -45,6 +45,11 @@ const CurrencyContainer = ({
                     amount={isSellContainer ? sellAmount : buyAmount} 
                     changeAmount={isSellContainer ? changeSellAmount : changeBuyAmount} 
                     focusOnCurrent={focusOnCurrent}/>
+                {
+                    isSellContainer ? 
+                    <p>{`${(sellAmount == 0 || Number.isNaN(sellAmount)) ? 1 : sellAmount} ${sellCurrency} = ${prices[sellCurrency]} USD`}</p> : 
+                    <p>{`${(buyAmount == 0|| Number.isNaN(buyAmount)) ? 1 : buyAmount} ${buyCurrency} = ${prices[buyCurrency]} USD`}</p> 
+                }
             </div>
         </div>
     )

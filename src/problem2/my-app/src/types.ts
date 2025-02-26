@@ -24,3 +24,7 @@ export interface CurrencyInputProps {
     changeAmount: (currency: number) => void,
     focusOnCurrent: () => void
 }
+
+export interface SwapIconProps {
+    swap: () => void
+}
