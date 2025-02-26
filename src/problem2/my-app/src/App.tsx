@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from "axios";
 import CurrencyContainer from './Components/CurrencyContainer.tsx';
 import SwapIcon from './Components/SwapIcon.tsx';
+import TransactionButton from './Components/TransactionButton.tsx';
 
 const App = () => {
 
@@ -100,6 +101,9 @@ const App = () => {
 					isSellFocused={isSellFocused}
 					focusOnCurrent={focusOnBuy}/>
       		</div>
+			<div className="flex flex-row justify-center">
+				<TransactionButton />
+			</div>
     	</div>
   	)
 }
