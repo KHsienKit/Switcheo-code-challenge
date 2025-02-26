@@ -7,7 +7,7 @@ const SwapIcon = ({swap}: SwapIconProps) => {
             viewBox="0 0 24 24" 
             strokeWidth="1.5" 
             stroke="currentColor" 
-            className="size-10 p-1 mt-18 bg-gray-600 hover:cursor-pointer"
+            className="size-10 p-1 mt-35 bg-gray-600 hover:cursor-pointer rounded-4xl"
             onClick={swap}>
             <path 
                 strokeLinecap="round" 

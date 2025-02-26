@@ -12,7 +12,7 @@ const isOperator = (code: string): boolean => {
 const CurrencyInput = ({amount, changeAmount, focusOnCurrent}: CurrencyInputProps) => {
 
     return (
-        <form className="flex" onClick={focusOnCurrent}>
+        <form className="flex my-4" onClick={focusOnCurrent}>
             <input type="number"
                     value={amount}
                     min={0}
@@ -24,7 +24,7 @@ const CurrencyInput = ({amount, changeAmount, focusOnCurrent}: CurrencyInputProp
                             return false;
                         }
                     }}
-                    className="border-2 flex-grow appearance-none">
+                    className="border-2 flex-grow appearance-none w-40">
             </input>
         </form>
     )

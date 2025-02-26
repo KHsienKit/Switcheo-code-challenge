@@ -36,7 +36,7 @@ const CurrencyContainer = ({
 
     return (
         <div className="w-1/2 default-border mx-4 my-8 p-8">
-            <h1 className="text-center">{isSellContainer ? "Sell" : "Buy"}</h1>
+            <h1 className="text-center p-4 text-4xl">{isSellContainer ? "Sell" : "Buy"}</h1>
             <div className="flex flex-col items-center">
                 <CurrencyMenu 
                     currency={isSellContainer ? sellCurrency : buyCurrency} 

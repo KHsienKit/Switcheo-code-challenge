@@ -4,6 +4,7 @@
     .default-border {
         border-width: 2px;
         border-color: white;
+        border-radius: 1rem
     }
 }
 
@@ -13,4 +14,25 @@
       -webkit-appearance: none;
       margin: 0;
     }
-  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #4a5565;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

@@ -17,7 +17,9 @@ const App = () => {
 	}
 
 	const changeSellAmount = (amount: number) => {
-		return setSellAmount(amount);
+		let temp = amount.toFixed(5)
+		let formattedAmount = parseFloat(temp)
+		return setSellAmount(formattedAmount);
 	}
 
 	const changeBuyCurrency = (currency: string) => {
@@ -25,7 +27,9 @@ const App = () => {
 	}
 
 	const changeBuyAmount = (amount: number) => {
-		return setBuyAmount(amount);
+		let temp = amount.toFixed(5)
+		let formattedAmount = parseFloat(temp)
+		return setSellAmount(formattedAmount);
 	}
 
 	const focusOnSell = () => {
