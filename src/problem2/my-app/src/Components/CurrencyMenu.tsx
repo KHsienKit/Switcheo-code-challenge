@@ -12,7 +12,7 @@ const CurrencyMenu = ({currency, changeCurrency, prices}: CurrencyMenuProps) => 
         <div className="relative flex flex-col text-xl">
             <button 
                 className={`${isDropdownFocused ? "rounded-t-2xl" : "rounded-3xl"} 
-                            bg-gray-600 w-40 h-10 flex flex-row items-center justify-between hover:cursor-pointer
+                            bg-gray-600 w-40 h-10 flex flex-row items-center justify-between hover:cursor-pointer hover:bg-gray-800
                             transition-all delay-100`} 
                 onClick={() => changeFocus(isDropdownFocused)} 
                 onBlur={() => setIsDropdownFocused(false)}>
