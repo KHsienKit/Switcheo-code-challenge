@@ -55,7 +55,6 @@ const App = () => {
 				setPrices(() => {
 					let oj: Record<string,number> = {}
 					for (let i = 0; i < data.length; i += 1) {
-						// prev[data[i]["currency"]] = data[i]["price"]
 						oj[data[i]["currency"]] = data[i]["price"]
 					}
 					return oj;
