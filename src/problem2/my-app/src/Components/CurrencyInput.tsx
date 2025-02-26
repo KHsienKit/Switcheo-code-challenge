@@ -24,7 +24,7 @@ const CurrencyInput = ({amount, changeAmount, focusOnCurrent}: CurrencyInputProp
                             return false;
                         }
                     }}
-                    className="border-2 flex-grow">
+                    className="border-2 flex-grow appearance-none">
             </input>
         </form>
     )

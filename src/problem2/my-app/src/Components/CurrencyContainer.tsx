@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import { CurrencyContainerProps } from '../types'
 import CurrencyMenu from './CurrencyMenu'
 import CurrencyInput from './CurrencyInput'
+import ConvertToUSD from './ConvertToUSD'
 
 const currencyToUSD = (currency: number, rate: number): number => {
     return currency * rate
@@ -31,12 +32,12 @@ const CurrencyContainer = ({
         else if (!isSellFocused && isSellContainer && buyAmount != 0) {
             changeSellAmount(changeCurrency(prices[buyCurrency], buyAmount, prices[sellCurrency]))
         }
-    }, [sellAmount, buyAmount])
+    }, [sellAmount, sellCurrency, buyAmount, buyCurrency])
 
     return (
-        <div className="w-1/2">
-            <h1 className="default-border text-center">{isSellContainer ? "Sell" : "Buy"}</h1>
-            <div className="flex flex-col default-border items-center">
+        <div className="w-1/2 default-border mx-4 my-8 p-8">
+            <h1 className="text-center">{isSellContainer ? "Sell" : "Buy"}</h1>
+            <div className="flex flex-col items-center">
                 <CurrencyMenu 
                     currency={isSellContainer ? sellCurrency : buyCurrency} 
                     changeCurrency={isSellContainer ? changeSellCurrency : changeBuyCurrency} 
@@ -45,11 +46,10 @@ const CurrencyContainer = ({
                     amount={isSellContainer ? sellAmount : buyAmount} 
                     changeAmount={isSellContainer ? changeSellAmount : changeBuyAmount} 
                     focusOnCurrent={focusOnCurrent}/>
-                {
-                    isSellContainer ? 
-                    <p>{`${(sellAmount == 0 || Number.isNaN(sellAmount)) ? 1 : sellAmount} ${sellCurrency} = ${prices[sellCurrency]} USD`}</p> : 
-                    <p>{`${(buyAmount == 0|| Number.isNaN(buyAmount)) ? 1 : buyAmount} ${buyCurrency} = ${prices[buyCurrency]} USD`}</p> 
-                }
+                <ConvertToUSD 
+                    amount={isSellContainer ? sellAmount : buyAmount} 
+                    currency={isSellContainer ? sellCurrency : buyCurrency}
+                    prices={prices} />
             </div>
         </div>
     )
